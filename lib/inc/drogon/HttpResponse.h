@@ -236,6 +236,11 @@ class HttpResponse
         setBody(body, N - 1);
     }
 
+    void setBodyData(const char* data, size_t len)
+    {
+        setBody(data, len);
+    }
+
     /// Get the response body.
     string_view body() const
     {
