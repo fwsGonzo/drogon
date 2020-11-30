@@ -156,7 +156,7 @@ HttpServer::HttpServer(
     const std::vector<std::function<HttpResponsePtr(const HttpRequestPtr &)>>
         &syncAdvices)
 #ifdef __linux__
-    : server_(loop, listenAddr, name.c_str()),
+    : server_(loop, listenAddr, name.c_str(), false, true),
 #else
     : server_(loop, listenAddr, name.c_str(), true, false),
 #endif

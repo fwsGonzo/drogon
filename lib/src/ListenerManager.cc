@@ -94,12 +94,12 @@ std::vector<trantor::EventLoop *> ListenerManager::createListeners(
             if (i == 0)
             {
                 DrogonFileLocker lock;
-                // Check whether the port is in use.
+                // Check whether the port is bindable.
                 TcpServer server(HttpAppFrameworkImpl::instance().getLoop(),
                                  InetAddress(ip, listener.port_, isIpv6),
                                  "drogonPortTest",
                                  true,
-                                 false);
+                                 true);
                 serverPtr = std::make_shared<HttpServer>(
                     loopThreadPtr->getLoop(),
                     InetAddress(ip, listener.port_, isIpv6),
